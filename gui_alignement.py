@@ -42,6 +42,7 @@ def align_text_animal(fichier_son, fichier_texte):
 
 
 app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div(children=[
     html.H1("Alignement son d'animal & paroles"),
