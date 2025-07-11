@@ -42,12 +42,11 @@ def align_text_animal(fichier_son, fichier_texte):
 
 
 app = dash.Dash(__name__)
-server = app.server
 
 app.layout = html.Div(children=[
     html.H1("Alignement son d'animal & paroles"),
-    dcc.Upload(['Son animal : Glissez-déposez ou ',
-                html.A('Cliquez pour sélectionner un fichier')],
+    html.H2("Son animal"),
+    dcc.Upload('Glissez-déposez ou cliquez pour sélectionner un fichier',
                id='upload-son',
                accept='.wav,.mp3',
                style={'width': '100%',
@@ -57,8 +56,8 @@ app.layout = html.Div(children=[
                       'borderStyle': 'dashed',
                       'borderRadius': '5px',
                       'textAlign': 'center'}),
-    dcc.Upload(['Paroles : Glissez-déposez ou ',
-                html.A('Cliquez pour sélectionner un fichier')],
+    html.H2("Paroles"),
+    dcc.Upload('Glissez-déposez ou cliquez pour sélectionner un fichier',
                id='upload-paroles',
                accept='.txt',
                style={'width': '100%',
@@ -71,6 +70,23 @@ app.layout = html.Div(children=[
     html.Button("Télécharger l'alignment", id="btn-download"),
     dcc.Download(id="download-alignment"),
 ])
+
+@app.callback(
+    Output('upload-son', 'children'),
+    Input('upload-son', 'filename'),
+    prevent_initial_call=True,
+)
+def update_son(filename):
+    return filename
+
+
+@app.callback(
+    Output('upload-paroles', 'children'),
+    Input('upload-paroles', 'filename'),
+    prevent_initial_call=True,
+)
+def update_paroles(filename):
+    return filename
 
 
 @app.callback(
