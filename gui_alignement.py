@@ -51,12 +51,12 @@ def align_text_animal(fichier_son, fichier_texte, nb_replications, n_fft,
     dt = process_time() - t0
     print(f"Alignment took {dt:.2f} seconds")
     alignment = [(start, word) for start, end, word in alignment]
-    dtw_figures, grid_alignment_figures = \
-        display_plotly.build_all_figures(path=output_path)
-    for k in dtw_figures:
-        FIGURES[k] = dtw_figures[k]
-    for k in grid_alignment_figures:
-        FIGURES[k] = grid_alignment_figures[k]
+    # dtw_figures, grid_alignment_figures = \
+    #     display_plotly.build_all_figures(path=output_path)
+    # for k in dtw_figures:
+    #     FIGURES[k] = dtw_figures[k]
+    # for k in grid_alignment_figures:
+    #     FIGURES[k] = grid_alignment_figures[k]
     return alignment, output_path
 
 
