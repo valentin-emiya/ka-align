@@ -292,20 +292,20 @@ def align(text_file, animal_audiofile, n_fft, hop_length, sep='Inchangé',
                  word_starts=word_starts, word_ends=word_ends)
         np.savez(output_path / "params.npz",
                  n_fft=n_fft, hop_length=hop_length, sr=sr)
-    try:
-        stretch_audio(text_audiofile,
-                      output_path / "text_aligned_with_animal.mp3",
-                      words, text_starts, text_ends,
-                      animal_starts, animal_ends)
-    except ZeroDivisionError:
-        print("ZeroDivisionError: Skipping stretching of text audio.")
+    # try:
+    #     stretch_audio(text_audiofile,
+    #                   output_path / "text_aligned_with_animal.mp3",
+    #                   words, text_starts, text_ends,
+    #                   animal_starts, animal_ends)
+    # except ZeroDivisionError:
+    #     print("ZeroDivisionError: Skipping stretching of text audio.")
 
-    try:
-        stretch_audio(words_audiofile,
-                      output_path / "words_aligned_with_text.mp3",
-                      words, word_starts, word_ends, text_starts, text_ends)
-    except ZeroDivisionError:
-        print("ZeroDivisionError: Skipping stretching of words audio.")
+    # try:
+    #     stretch_audio(words_audiofile,
+    #                   output_path / "words_aligned_with_text.mp3",
+    #                   words, word_starts, word_ends, text_starts, text_ends)
+    # except ZeroDivisionError:
+    #     print("ZeroDivisionError: Skipping stretching of words audio.")
 
     return alignement
 
