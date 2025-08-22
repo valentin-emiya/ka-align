@@ -2,4 +2,4 @@ from gui_alignement import app
 
 
 server = app.server
-app.run(port=10000)
+app.run(host="0.0.0.0", port=10000)
